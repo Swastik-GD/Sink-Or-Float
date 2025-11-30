@@ -16,10 +16,19 @@ public class ObjectInfo : MonoBehaviour
     public Transform sinkTarget;
     public Transform floatTarget;
 
+    [Header("Buttons container")]
+    public GameObject buttonsContainer;
 
-    public void Start()
+    void Start()
     {
-        
+        sinkButton = buttonsContainer.transform.Find("Sink").GetComponent<Button>();
+        floatButton = buttonsContainer.transform.Find("Float").GetComponent<Button>();
+
+        if (buttonsContainer != null)
+        {
+            buttonsContainer.SetActive(false);
+        }
     }
+
 
 }
