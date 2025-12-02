@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -3603556060819865620, guid: 11c0ed88c13582444b255fbf617cdf06, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,3 +107,4 @@ MonoBehaviour:
   sinkTarget: {fileID: 0}
   floatTarget: {fileID: 0}
   buttonsContainer: {fileID: 0}
+  moveDuration: 0.6
