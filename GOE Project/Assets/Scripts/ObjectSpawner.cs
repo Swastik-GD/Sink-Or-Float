@@ -33,6 +33,9 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
+        buttonContainer1.SetActive(false);
+        buttonContainer2.SetActive(false);
+        buttonContainer3.SetActive(false);
         SpawnObjects();
     }
 

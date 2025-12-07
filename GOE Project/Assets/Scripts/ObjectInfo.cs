@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class ObjectInfo : MonoBehaviour
 {
     [Header("Info")]
-    public string objectName;
-    public bool willFloat;
+    [SerializeField] string objectName;
+    [SerializeField] bool willFloat;
 
     [Header("Buttons")]
-    public Button sinkButton;
-    public Button floatButton;
+    [SerializeField] Button sinkButton;
+    [SerializeField] Button floatButton;
 
     [Header("Targets")]
     public Transform sinkTarget;
@@ -21,40 +21,22 @@ public class ObjectInfo : MonoBehaviour
     public GameObject buttonsContainer;
 
     [Header("Movement")]
-    public float moveDuration = 0.6f;
+    [SerializeField] float moveDuration = 0.6f;
 
     bool answered = false;
+    public ScoreManager scoreManager;
 
     void Start()
     {
-        sinkButton = buttonsContainer.transform.Find("Sink").GetComponent<Button>();
-        floatButton = buttonsContainer.transform.Find("Float").GetComponent<Button>();
-
-        buttonsContainer.SetActive(false);
+        scoreManager = FindAnyObjectByType<ScoreManager>();
     }
-
     public void SetupForSpawn()
     {
-        // Show buttons
-        if (buttonsContainer != null)
-            buttonsContainer.SetActive(true);
-        else
-        {
-            if (sinkButton != null) sinkButton.gameObject.SetActive(true);
-            if (floatButton != null) floatButton.gameObject.SetActive(true);
-        }
 
-        // Ensure we have button references (try to find if still null)
-        if (sinkButton == null && buttonsContainer != null)
-        {
-            Transform t = buttonsContainer.transform.Find("Sink");
-            if (t != null) sinkButton = t.GetComponent<Button>();
-        }
-        if (floatButton == null && buttonsContainer != null)
-        {
-            Transform t = buttonsContainer.transform.Find("Float");
-            if (t != null) floatButton = t.GetComponent<Button>();
-        }
+        buttonsContainer.SetActive(true);
+
+        sinkButton = buttonsContainer.transform.Find("Sink").GetComponent<Button>();
+        floatButton = buttonsContainer.transform.Find("Float").GetComponent<Button>();
 
         // Hook up listeners (clear previous to avoid duplicate)
         if (sinkButton != null)
@@ -75,24 +57,33 @@ public class ObjectInfo : MonoBehaviour
     void OnAnswer(bool choseFloat)
     {
         if (answered) return;
+
         answered = true;
 
         // Hide buttons immediately
         if (buttonsContainer != null)
-            buttonsContainer.SetActive(false);
-        else
         {
-            if (sinkButton != null) sinkButton.gameObject.SetActive(false);
-            if (floatButton != null) floatButton.gameObject.SetActive(false);
+            buttonsContainer.SetActive(false);
         }
 
         bool correct = (choseFloat == willFloat);
         Debug.Log(objectName + " -> " + (correct ? "Correct" : "Wrong"));
+        if (correct)
+        {
+            scoreManager.CorrectAnswer();
+        }
+        else
+        {
+            scoreManager.WrongAnswer();
+        }
 
         // Move to actual target determined by willFloat
         Transform target = willFloat ? floatTarget : sinkTarget;
         if (target != null)
+        {
             StartCoroutine(MoveToTarget(target));
+        }
+
         else
             Debug.LogWarning("ObjectInfo: target not assigned for " + objectName);
     }
