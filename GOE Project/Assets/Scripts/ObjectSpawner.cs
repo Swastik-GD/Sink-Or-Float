@@ -31,36 +31,49 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject buttonContainer2;
     [SerializeField] GameObject buttonContainer3;
 
+    public int hasAnswered = 0;
+
     void Start()
     {
         buttonContainer1.SetActive(false);
         buttonContainer2.SetActive(false);
         buttonContainer3.SetActive(false);
-        SpawnObjects();
+        StartCoroutine(SpawnObjects());
     }
 
-    void SpawnObjects()
-    {
+     IEnumerator SpawnObjects()
+     {
         if (Spawner1.Count > 0)
         {
             int r1 = UnityEngine.Random.Range(0, Spawner1.Count);
             GameObject obj1 = Instantiate(Spawner1[r1], spawnPoint1.position, Quaternion.identity);
             AssignTargets(obj1, floatTarget1, sinkTarget1, buttonContainer1);
         }
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(WaitAndSpawn1());
+     }
 
+    IEnumerator WaitAndSpawn1()
+    {
         if (Spawner2.Count > 0)
         {
             int r2 = UnityEngine.Random.Range(0, Spawner2.Count);
             GameObject obj2 = Instantiate(Spawner2[r2], spawnPoint2.position, Quaternion.identity);
             AssignTargets(obj2, floatTarget2, sinkTarget2, buttonContainer2);
         }
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(WaitAndSpawn2());
+    }
 
+    IEnumerator WaitAndSpawn2()
+    {
         if (Spawner3.Count > 0)
         {
             int r3 = UnityEngine.Random.Range(0, Spawner3.Count);
             GameObject obj3 = Instantiate(Spawner3[r3], spawnPoint3.position, Quaternion.identity);
             AssignTargets(obj3, floatTarget3, sinkTarget3, buttonContainer3);
         }
+        yield return new WaitForSeconds(1f);
     }
 
     void AssignTargets(GameObject spawned, Transform floatT, Transform sinkT, GameObject container)
@@ -80,6 +93,19 @@ public class ObjectSpawner : MonoBehaviour
         else
         {
             Debug.LogWarning("Spawned object does not have an ObjectInfo component.");
+        }
+    }
+
+    public void NotifyAnswered()
+    {
+        hasAnswered++;
+        if(hasAnswered == 3)
+        {
+            hasAnswered = 0;
+            StartCoroutine(SpawnObjects());
+            // All objects answered, proceed to next step
+            Debug.Log("All objects answered. Proceeding to next step.");
+            // Implement next step logic here
         }
     }
 }

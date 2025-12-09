@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5951047658327779162
+--- !u!1 &8117880512138525330
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3973406505292819285}
-  - component: {fileID: 4661460759850716262}
-  - component: {fileID: 135701544746067580}
+  - component: {fileID: 8581116476945292389}
+  - component: {fileID: 3172201163639657118}
   m_Layer: 0
-  m_Name: Ancher
+  m_Name: +10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3973406505292819285
+--- !u!4 &8581116476945292389
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951047658327779162}
+  m_GameObject: {fileID: 8117880512138525330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13068724, y: 2.26, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -7.1, y: -2.6, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4661460759850716262
+--- !u!212 &3172201163639657118
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951047658327779162}
+  m_GameObject: {fileID: 8117880512138525330}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,38 +75,15 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 6295445717117830734, guid: 546bb960c9444884abdf7c13cbc6fbc6, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: cfeb1ad56f27bc942865a716672bd001, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.67, y: 4.61}
+  m_Size: {x: 2.25, y: 2.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &135701544746067580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951047658327779162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20d7aaac53bf424fb0c02ddedfa61d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Ancher
-  willFloat: 0
-  sinkButton: {fileID: 0}
-  floatButton: {fileID: 0}
-  sinkTarget: {fileID: 0}
-  floatTarget: {fileID: 0}
-  buttonsContainer: {fileID: 0}
-  moveDuration: 1
-  scoreManager: {fileID: 0}
-  plusTen: {fileID: 8117880512138525330, guid: f85ad1810bc3d1a4caf97c7ded188059, type: 3}
-  minusFive: {fileID: 4004539773652186713, guid: 1b692d0921c62d349ab2cc3e8ecc6344, type: 3}

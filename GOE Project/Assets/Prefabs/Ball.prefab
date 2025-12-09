@@ -107,4 +107,7 @@ MonoBehaviour:
   sinkTarget: {fileID: 0}
   floatTarget: {fileID: 0}
   buttonsContainer: {fileID: 0}
-  moveDuration: 0.6
+  moveDuration: 1
+  scoreManager: {fileID: 0}
+  plusTen: {fileID: 8117880512138525330, guid: f85ad1810bc3d1a4caf97c7ded188059, type: 3}
+  minusFive: {fileID: 4004539773652186713, guid: 1b692d0921c62d349ab2cc3e8ecc6344, type: 3}

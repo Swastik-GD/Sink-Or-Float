@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,16 +26,20 @@ public class ObjectInfo : MonoBehaviour
 
     bool answered = false;
     public ScoreManager scoreManager;
+    public ObjectSpawner objectSpawner;
+
+    public GameObject plusTen;
+    public GameObject minusFive;
 
     void Start()
     {
+        objectSpawner = FindAnyObjectByType<ObjectSpawner>();
         scoreManager = FindAnyObjectByType<ScoreManager>();
+        transform.localScale = new Vector3();
+        LeanTween.scale(gameObject, new Vector3(0.6f, 0.6f, 0.6f), 1f).setEaseOutBounce().setDelay(1f).setOnComplete(ButtonBounce);
     }
     public void SetupForSpawn()
     {
-
-        buttonsContainer.SetActive(true);
-
         sinkButton = buttonsContainer.transform.Find("Sink").GetComponent<Button>();
         floatButton = buttonsContainer.transform.Find("Float").GetComponent<Button>();
 
@@ -54,11 +59,23 @@ public class ObjectInfo : MonoBehaviour
         else Debug.LogWarning($"ObjectInfo ({name}) - floatButton missing.");
     }
 
+    void ButtonBounce()
+    {
+        buttonsContainer.SetActive(true);
+        buttonsContainer.transform.localScale = new Vector3();
+        LeanTween.scale(buttonsContainer, new Vector3(1f, 1f, 1f), 1f).setEaseOutQuint();
+    }
+
     void OnAnswer(bool choseFloat)
     {
-        if (answered) return;
+        if (answered)
+        {
+            objectSpawner.NotifyAnswered();
+            return;
+        }
 
         answered = true;
+        objectSpawner.NotifyAnswered();
 
         // Hide buttons immediately
         if (buttonsContainer != null)
@@ -70,10 +87,24 @@ public class ObjectInfo : MonoBehaviour
         Debug.Log(objectName + " -> " + (correct ? "Correct" : "Wrong"));
         if (correct)
         {
+            GameObject clone = Instantiate(plusTen, transform.position, Quaternion.identity);
+            clone.transform.localScale = new Vector3();
+            LeanTween.scale(clone, new Vector3(0.5f, 0.5f, 0.5f), 0.8f).setEaseOutBack();
+            LeanTween.move(clone, new Vector3(-7.1f, -2.6f, 0), 0.8f).setEaseLinear().setDelay(0.5f).setOnComplete(() =>
+            {
+                Destroy(clone);
+            });
             scoreManager.CorrectAnswer();
         }
         else
         {
+            GameObject clone = Instantiate(minusFive, transform.position, Quaternion.identity);
+            clone.transform.localScale = new Vector3();
+            LeanTween.scale(clone, new Vector3(0.4f, 0.4f, 0.4f), 0.8f).setEaseOutBack();
+            LeanTween.move(clone, new Vector3(-7.1f, -2.6f, 0), 0.8f).setDelay(0.5f).setOnComplete(() =>
+            {
+                Destroy(clone);
+            });
             scoreManager.WrongAnswer();
         }
 
