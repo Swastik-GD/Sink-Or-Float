@@ -31,6 +31,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject buttonContainer2;
     [SerializeField] GameObject buttonContainer3;
 
+    private GameObject obj1, obj2, obj3;
+
     public int hasAnswered = 0;
 
     void Start()
@@ -46,10 +48,10 @@ public class ObjectSpawner : MonoBehaviour
         if (Spawner1.Count > 0)
         {
             int r1 = UnityEngine.Random.Range(0, Spawner1.Count);
-            GameObject obj1 = Instantiate(Spawner1[r1], spawnPoint1.position, Quaternion.identity);
+            obj1 = Instantiate(Spawner1[r1], spawnPoint1.position, Quaternion.identity);
             AssignTargets(obj1, floatTarget1, sinkTarget1, buttonContainer1);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(WaitAndSpawn1());
      }
 
@@ -58,10 +60,10 @@ public class ObjectSpawner : MonoBehaviour
         if (Spawner2.Count > 0)
         {
             int r2 = UnityEngine.Random.Range(0, Spawner2.Count);
-            GameObject obj2 = Instantiate(Spawner2[r2], spawnPoint2.position, Quaternion.identity);
+            obj2 = Instantiate(Spawner2[r2], spawnPoint2.position, Quaternion.identity);
             AssignTargets(obj2, floatTarget2, sinkTarget2, buttonContainer2);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(WaitAndSpawn2());
     }
 
@@ -70,10 +72,10 @@ public class ObjectSpawner : MonoBehaviour
         if (Spawner3.Count > 0)
         {
             int r3 = UnityEngine.Random.Range(0, Spawner3.Count);
-            GameObject obj3 = Instantiate(Spawner3[r3], spawnPoint3.position, Quaternion.identity);
+            obj3 = Instantiate(Spawner3[r3], spawnPoint3.position, Quaternion.identity);
             AssignTargets(obj3, floatTarget3, sinkTarget3, buttonContainer3);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
     }
 
     void AssignTargets(GameObject spawned, Transform floatT, Transform sinkT, GameObject container)
@@ -101,11 +103,21 @@ public class ObjectSpawner : MonoBehaviour
         hasAnswered++;
         if(hasAnswered == 3)
         {
+            LeanTween.scale(obj1, new Vector3(), 0.5f).setEaseInBack();
+            LeanTween.scale(obj2, new Vector3(), 0.5f).setEaseInBack();
+            LeanTween.scale(obj3, new Vector3(), 0.5f).setEaseInBack().setOnComplete(DestroyObjects);
             hasAnswered = 0;
-            StartCoroutine(SpawnObjects());
             // All objects answered, proceed to next step
             Debug.Log("All objects answered. Proceeding to next step.");
             // Implement next step logic here
         }
+    }
+
+    private void DestroyObjects()
+    {
+        Destroy(obj1);
+        Destroy(obj2);
+        Destroy(obj3);
+        StartCoroutine(SpawnObjects());
     }
 }

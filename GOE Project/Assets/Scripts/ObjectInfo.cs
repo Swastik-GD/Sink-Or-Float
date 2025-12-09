@@ -70,12 +70,12 @@ public class ObjectInfo : MonoBehaviour
     {
         if (answered)
         {
-            objectSpawner.NotifyAnswered();
+            //objectSpawner.NotifyAnswered();
             return;
         }
 
         answered = true;
-        objectSpawner.NotifyAnswered();
+        //objectSpawner.NotifyAnswered();
 
         // Hide buttons immediately
         if (buttonsContainer != null)
@@ -133,5 +133,6 @@ public class ObjectInfo : MonoBehaviour
         }
 
         transform.position = end;
+        objectSpawner.NotifyAnswered();
     }
 }
