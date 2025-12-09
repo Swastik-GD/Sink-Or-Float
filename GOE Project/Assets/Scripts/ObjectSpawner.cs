@@ -32,6 +32,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject buttonContainer3;
 
     private GameObject obj1, obj2, obj3;
+    private int r1, r2, r3;
 
     public int hasAnswered = 0;
 
@@ -47,7 +48,7 @@ public class ObjectSpawner : MonoBehaviour
      {
         if (Spawner1.Count > 0)
         {
-            int r1 = UnityEngine.Random.Range(0, Spawner1.Count);
+            r1 = UnityEngine.Random.Range(0, Spawner1.Count);
             obj1 = Instantiate(Spawner1[r1], spawnPoint1.position, Quaternion.identity);
             AssignTargets(obj1, floatTarget1, sinkTarget1, buttonContainer1);
         }
@@ -59,7 +60,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (Spawner2.Count > 0)
         {
-            int r2 = UnityEngine.Random.Range(0, Spawner2.Count);
+            r2 = UnityEngine.Random.Range(0, Spawner2.Count);
             obj2 = Instantiate(Spawner2[r2], spawnPoint2.position, Quaternion.identity);
             AssignTargets(obj2, floatTarget2, sinkTarget2, buttonContainer2);
         }
@@ -71,7 +72,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (Spawner3.Count > 0)
         {
-            int r3 = UnityEngine.Random.Range(0, Spawner3.Count);
+            r3 = UnityEngine.Random.Range(0, Spawner3.Count);
             obj3 = Instantiate(Spawner3[r3], spawnPoint3.position, Quaternion.identity);
             AssignTargets(obj3, floatTarget3, sinkTarget3, buttonContainer3);
         }
@@ -113,11 +114,14 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    private void DestroyObjects()
+    void DestroyObjects()
     {
         Destroy(obj1);
         Destroy(obj2);
         Destroy(obj3);
+        Spawner1.RemoveAt(r1);
+        Spawner2.RemoveAt(r2);
+        Spawner3.RemoveAt(r3);
         StartCoroutine(SpawnObjects());
     }
 }

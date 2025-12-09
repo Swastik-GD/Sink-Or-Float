@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.605973, y: 2.849939, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,5 +109,6 @@ MonoBehaviour:
   buttonsContainer: {fileID: 0}
   moveDuration: 1
   scoreManager: {fileID: 0}
+  objectSpawner: {fileID: 0}
   plusTen: {fileID: 8117880512138525330, guid: f85ad1810bc3d1a4caf97c7ded188059, type: 3}
   minusFive: {fileID: 4004539773652186713, guid: 1b692d0921c62d349ab2cc3e8ecc6344, type: 3}
