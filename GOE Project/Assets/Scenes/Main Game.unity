@@ -1343,14 +1343,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawner1:
+  - {fileID: 5951047658327779162, guid: c9f108cbf2bdd704f91826b9b8ba089a, type: 3}
   - {fileID: 1437122474696907085, guid: 45294b96ee8de5e419ec6768fae20bb0, type: 3}
-  - {fileID: 6361069822725619327, guid: a18a8ac21f0b4614c9eb3054075c2ae7, type: 3}
+  - {fileID: 2926766653933755628, guid: 6a0b86164890d5746b8e4343f7f6eebf, type: 3}
+  - {fileID: 4309443393657350072, guid: a37cad041c158af49a3ea223914d4323, type: 3}
+  - {fileID: 7350101650225982408, guid: 46e7f4a583caab74a9006f5bd97c509d, type: 3}
   Spawner2:
-  - {fileID: 5951047658327779162, guid: c9f108cbf2bdd704f91826b9b8ba089a, type: 3}
-  - {fileID: 1437122474696907085, guid: 45294b96ee8de5e419ec6768fae20bb0, type: 3}
+  - {fileID: 7418282323159775863, guid: 44bee8bc51564324c924c5faad24ce06, type: 3}
+  - {fileID: 8193515157556688759, guid: d2da4fb731c927d459af9700033acf2d, type: 3}
+  - {fileID: 704948057038514388, guid: 2cc31009a19474646a2e9cf75f652122, type: 3}
+  - {fileID: 7326248208580413090, guid: dc6ae8e482dc0bb4599675de48d04a58, type: 3}
+  - {fileID: 2106197596670708841, guid: 10c4b2d0b86449b46811063ed7e4e67f, type: 3}
   Spawner3:
-  - {fileID: 6361069822725619327, guid: a18a8ac21f0b4614c9eb3054075c2ae7, type: 3}
-  - {fileID: 5951047658327779162, guid: c9f108cbf2bdd704f91826b9b8ba089a, type: 3}
+  - {fileID: 930835158201930734, guid: a18a8ac21f0b4614c9eb3054075c2ae7, type: 3}
+  - {fileID: 6713253156924218458, guid: b4a4b7c9a0a0b3b49a5858e77e81748f, type: 3}
+  - {fileID: 8949616537708980225, guid: b425394e71600ab40bc059305ea572b3, type: 3}
+  - {fileID: 171938280865919730, guid: 4992913dde1d42a4195f6d961ad256cd, type: 3}
+  - {fileID: 4104200655018994935, guid: d440c2f3b14633d4289beae997255cf5, type: 3}
   spawnPoint1: {fileID: 1908516434}
   spawnPoint2: {fileID: 619321140}
   spawnPoint3: {fileID: 1960268755}

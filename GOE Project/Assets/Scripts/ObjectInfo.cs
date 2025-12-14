@@ -70,12 +70,10 @@ public class ObjectInfo : MonoBehaviour
     {
         if (answered)
         {
-            //objectSpawner.NotifyAnswered();
             return;
         }
 
         answered = true;
-        //objectSpawner.NotifyAnswered();
 
         // Hide buttons immediately
         if (buttonsContainer != null)
