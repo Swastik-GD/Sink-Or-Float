@@ -31,6 +31,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject buttonContainer2;
     [SerializeField] GameObject buttonContainer3;
 
+    [SerializeField] GameObject Tub;
+
     private GameObject obj1, obj2, obj3;
     private int r1, r2, r3;
 
@@ -38,6 +40,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
+        LeanTween.moveY(Tub, -6.7f, 0.5f);
         buttonContainer1.SetActive(false);
         buttonContainer2.SetActive(false);
         buttonContainer3.SetActive(false);
